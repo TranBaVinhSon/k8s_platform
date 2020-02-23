@@ -13,10 +13,11 @@ spec:
         app: panda
       annotations:
         "prometheus.io/scrape": "true"
-    # spec:
-    #   containers:
-    #       imagePullPolicy: IfNotPresent
-    #       ports:
-    #         - name: http-port
-    #           containerPort: 3000
-    #           protocol: TCP
+    spec:
+      containers:
+        - name: panda
+          image: sontbv/panda:latest
+          ports:
+            - name: http-port
+              containerPort: 3000
+              protocol: TCP

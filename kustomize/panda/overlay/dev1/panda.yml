@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: panda-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: panda
+  template:
+    spec:
+      containers:
+        - name: panda
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 300m
+            limits:
+              memory: 256Mi
+              cpu: 300m

@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: panda-dev1
+namePrefix: panda-dev1-
+commonLabels:
+  env: dev1
+
+patchesStrategicMerge:
+  - panda.yml
+
+images:
+  - name: sontbv/panda
+  - newTag: latest
+
+bases:
+  - ../../base
