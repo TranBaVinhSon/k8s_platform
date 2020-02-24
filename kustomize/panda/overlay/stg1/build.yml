@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    env: stg1
+    microservice: panda
+  name: panda-stg1-panda-deployment
+  namespace: panda-stg1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: panda
+      env: stg1
+      microservice: panda
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+      labels:
+        app: panda
+        env: stg1
+        microservice: panda
+    spec:
+      containers:
+      - image: sontbv/panda:latest
+        name: panda
+        ports:
+        - containerPort: 3000
+          name: http-port
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 300m
+            memory: 256Mi
+          requests:
+            cpu: 300m
+            memory: 256Mi
